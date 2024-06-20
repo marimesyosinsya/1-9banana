@@ -2,10 +2,6 @@ body {
   background-color: #ccc; /* これは灰色 */
 }
 
-.emergency {
-	background-color: #0ff;
-}
-
 a {
   text-decoration: none;
 }
