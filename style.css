@@ -20,7 +20,7 @@ a {
 	text-decoration: none;
   background-color: #fff;
   border-radius: 20px;
-	border: 2px solid #325328;
+	border: 2px solid #333;
 }
 
 .btn a::after {
@@ -33,5 +33,5 @@ a {
 	height: 6px;
 	border-width: 2px 2px 0 0;
 	border-style: solid;
-	border-color: #325328;
+	border-color: #333;
 }
