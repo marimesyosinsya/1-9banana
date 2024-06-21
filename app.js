@@ -1,5 +1,5 @@
-// ダミーのコメントデータ
-let comments = [];
+// コメントデータをローカルストレージから取得する
+let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
 // コメントを表示する関数
 function displayComments() {
@@ -17,7 +17,7 @@ function displayComments() {
     });
 }
 
-// コメントを追加する関数
+// コメントを追加して保存する関数
 function addComment(event) {
     event.preventDefault(); // フォームのデフォルトの動作を無効化
 
@@ -35,12 +35,26 @@ function addComment(event) {
     }
 
     const date = new Date().toLocaleString();
-    comments.push({ user: userName, text: commentText, date });
+    const newComment = { user: userName, text: commentText, date };
+    comments.push(newComment);
+    saveComments(); // コメントを保存する
+
+    // コメントを表示する
     displayComments();
 
     // コメント投稿後、フォームをクリアする
     document.getElementById('userName').value = '';
     document.getElementById('commentText').value = '';
+}
+
+// コメントをローカルストレージに保存する関数
+function saveComments() {
+    localStorage.setItem('comments', JSON.stringify(comments));
+}
+
+// ページ読み込み時にコメントを表示する
+window.onload = function() {
+    displayComments();
 }
 
 // コメント投稿フォームのイベントリスナーを設定
