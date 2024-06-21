@@ -18,9 +18,9 @@ function displayComments() {
 }
 
 // コメントを追加する関数
-function addComment(user, text) {
+function addComment(userName, text) {
     const date = new Date().toLocaleString();
-    comments.push({ user, text, date });
+    comments.push({ user: userName, text, date });
     displayComments();
 }
 
@@ -28,18 +28,24 @@ function addComment(user, text) {
 document.getElementById('commentForm').addEventListener('submit', function(event) {
     event.preventDefault(); // フォームのデフォルトの動作を無効化
 
+    const userName = document.getElementById('userName').value;
     const commentText = document.getElementById('commentText').value;
-    if (commentText.trim() !== '') {
-        // ここで実際にコメントを追加する処理を行う（例としてaddComment関数を呼び出す）
-        addComment('ユーザー名', commentText);
-
-        // コメント投稿後、フォームをクリアする
-        document.getElementById('commentText').value = '';
+    
+    if (userName.trim() === '') {
+        alert('ユーザー名を入力してください。');
+        return;
     }
+
+    if (commentText.trim() === '') {
+        alert('コメントを入力してください。');
+        return;
+    }
+
+    // ここで実際にコメントを追加する処理を行う（例としてaddComment関数を呼び出す）
+    addComment(userName, commentText);
+
+    // コメント投稿後、フォームをクリアする
+    document.getElementById('userName').value = '';
+    document.getElementById('commentText').value = '';
 });
 
-
-        // コメント投稿後、フォームをクリアする
-        document.getElementById('commentText').value = '';
-    }
-});
