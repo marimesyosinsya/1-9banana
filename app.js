@@ -37,3 +37,9 @@ document.getElementById('commentForm').addEventListener('submit', function(event
         document.getElementById('commentText').value = '';
     }
 });
+
+
+        // コメント投稿後、フォームをクリアする
+        document.getElementById('commentText').value = '';
+    }
+});
