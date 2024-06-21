@@ -18,14 +18,7 @@ function displayComments() {
 }
 
 // コメントを追加する関数
-function addComment(userName, text) {
-    const date = new Date().toLocaleString();
-    comments.push({ user: userName, text, date });
-    displayComments();
-}
-
-// コメント投稿フォームの処理
-document.getElementById('commentForm').addEventListener('submit', function(event) {
+function addComment(event) {
     event.preventDefault(); // フォームのデフォルトの動作を無効化
 
     const userName = document.getElementById('userName').value;
@@ -41,11 +34,14 @@ document.getElementById('commentForm').addEventListener('submit', function(event
         return;
     }
 
-    // ここで実際にコメントを追加する処理を行う（例としてaddComment関数を呼び出す）
-    addComment(userName, commentText);
+    const date = new Date().toLocaleString();
+    comments.push({ user: userName, text: commentText, date });
+    displayComments();
 
     // コメント投稿後、フォームをクリアする
     document.getElementById('userName').value = '';
     document.getElementById('commentText').value = '';
-});
+}
 
+// コメント投稿フォームのイベントリスナーを設定
+document.getElementById('commentForm').addEventListener('submit', addComment);
