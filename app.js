@@ -80,7 +80,7 @@ document.getElementById('commentForm').addEventListener('submit', function(event
     }
 
     if (commentText.trim() === '') {
-        alert('コメントを入力してください。');
+        alert('メモを入力してください。');
         return;
     }
 
